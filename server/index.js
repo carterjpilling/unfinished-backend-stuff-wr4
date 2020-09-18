@@ -1,9 +1,9 @@
 const express = require("express")
 const massive = require('massive')
 const session = require('express-session')
-const authCtrl = require('./authController')
+const authCtrl = require('./controllers/authController')
 require('dotenv').config()
-const tankCtrl = require('./tankController')
+const tankCtrl = require('./controllers/tankController')
 
 const app = express()
 
@@ -33,6 +33,6 @@ massive({
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 
-app.get('/api/tanks/:country_id', tankCtrl.getTanks)
+app.get('/api/tanks', tankCtrl.getTanks)
 
 app.listen(SERVER_PORT, () => console.log(`Take us to warp ${SERVER_PORT}!`))
